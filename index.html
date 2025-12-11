@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cloud Native Login</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Add Google Sign-In API (optional) -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
     <div class="container">
-
         <div class="login-panel">
             <div class="logo">
                 <h1>
@@ -18,7 +19,7 @@
             </div>
 
             <div class="welcome-section">
-                <h2>Welcome back</h2>
+                <h2>Welcome Back</h2>
                 <p>Please enter your details</p>
             </div>
 
@@ -32,8 +33,8 @@
                 <span class="error-message" id="password-error"></span>
 
                 <div class="options-row">
-                    <input type="checkbox" name="remember" id="remember-me-check"> 
-                    <label for="remember-me-check" class="remember-me-label">
+                    <label class="remember-me-label">
+                        <input type="checkbox" name="remember" id="remember-me-check">
                         Remember for 30 days
                     </label>
                     <a href="#" class="forgot-password">Forgot password</a>
@@ -41,25 +42,20 @@
 
                 <button type="submit" class="btn primary-btn">Sign in</button>
 
-                <button type="button" class="btn google-btn">
-                    <svg class="google-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-                        <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.614 3.737-4.85 6.474-8.736 7.154v4.276h4.867c2.81-2.735 4.414-6.495 4.414-10.375C37.848 24.363 36.657 22.083 34.611 20.323z"/>
-                        <path fill="#FF3D00" d="M24 44c5.166 0 9.86-1.973 13.409-5.192l-4.867-4.276c-2.339 1.488-5.32 2.347-8.542 2.347-6.529 0-12.242-4.437-14.288-10.428H2.433v4.493C6.31 40.852 14.82 44 24 44z"/>
-                        <path fill="#4CAF50" d="M9.696 20.323c-.156-.47-.234-.96-.234-1.455s.078-.985.234-1.455V13.89H4.83c-1.9 3.536-2.922 7.64-2.922 11.91C1.908 28.533 2.768 32.2 4.145 35.336l5.551-4.205c-.687-1.455-1.072-3.084-1.072-4.786z"/>
-                        <path fill="#1976D2" d="M24 10.8c3.923 0 7.39 1.43 10.123 3.572l3.447-3.376C34.646 6.54 29.146 4 24 4c-9.18 0-17.69 3.148-21.567 9.89l5.551 4.205C11.758 15.203 17.471 10.8 24 10.8z"/>
-                    </svg>
+                <button type="button" class="btn google-btn" id="google-signin-btn">
+                    <img src="google_btn.png" alt="Google Logo" class="google-img">
                     Sign in with Google
                 </button>
             </form>
 
             <div class="signup-link">
-                Don't have an account? <a href="#">Sign up</a>
+                Don't have an account? <a href="#" id="signup-link">Sign up</a>
             </div>
         </div>
         
         <div class="illustration-panel">
+            <!-- This will show the cloud graphic -->
         </div>
-
     </div>
     
     <script src="script.js"></script>

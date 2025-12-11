@@ -172,6 +172,12 @@ body {
     width: 20px;
     height: 20px;
 }
+.google-img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
 
 .signup-link {
     text-align: center;
@@ -220,4 +226,48 @@ body {
         box-shadow: none;
         max-height: none;
     }
+    /* Add to existing style.css */
+
+/* Loading spinner */
+.spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Disabled button state */
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Success/error states */
+.success-message {
+    color: #28a745;
+    font-size: 14px;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #d4edda;
+    border-radius: 4px;
+    border: 1px solid #c3e6cb;
+}
+
+.error-message {
+    color: var(--error-color);
+    font-size: 14px;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f8d7da;
+    border-radius: 4px;
+    border: 1px solid #f5c6cb;
+}
 }
