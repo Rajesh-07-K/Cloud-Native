@@ -1,7 +1,7 @@
 {
   "name": "cloud-native-auth",
   "version": "1.0.0",
-  "description": "Cloud Native Authentication System",
+  "description": "Cloud Native Authentication System with Dashboard",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

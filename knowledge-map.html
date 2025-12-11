@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Map | Cloud Native</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="knowledge-map.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <img src="Cloud_icon1.png" alt="Cloud Icon" class="cloud-icon">
+                    <h1>Cloud Native</h1>
+                </div>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <div class="user-profile">
+                <div class="avatar">
+                    <img src="https://ui-avatars.com/api/?name=User&background=4b0082&color=fff" 
+                         alt="User Avatar" id="userAvatar">
+                </div>
+                <div class="user-info">
+                    <h3 id="userDisplayName">Loading...</h3>
+                    <p id="userEmail">user@example.com</p>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="dashboard.html">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="profile.html">
+                        <i class="fas fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="knowledge-map.html">
+                        <i class="fas fa-map"></i>
+                        <span>Knowledge Map</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html">
+                        <i class="fas fa-info-circle"></i>
+                        <span>About</span>
+                    </a>
+                </li>
+                <li class="nav-item logout">
+                    <a href="#" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="sidebar-footer">
+                <div class="system-status">
+                    <div class="status-indicator online"></div>
+                    <span>System Online</span>
+                </div>
+                <div class="version">v1.0.0</div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    <h2>Knowledge Map</h2>
+                    <div class="breadcrumb">Home / Knowledge Map</div>
+                </div>
+                <div class="header-right">
+                    <div class="map-controls">
+                        <button class="btn secondary-btn" id="zoomInBtn">
+                            <i class="fas fa-search-plus"></i>
+                        </button>
+                        <button class="btn secondary-btn" id="zoomOutBtn">
+                            <i class="fas fa-search-minus"></i>
+                        </button>
+                        <button class="btn secondary-btn" id="resetViewBtn">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </div>
+                    <div class="date-time">
+                        <span id="currentDate"></span>
+                        <span id="currentTime"></span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Knowledge Map Container -->
+            <div class="knowledge-map-container">
+                <!-- Map Controls Sidebar -->
+                <div class="map-sidebar">
+                    <div class="map-filters">
+                        <h3><i class="fas fa-filter"></i> Filters</h3>
+                        <div class="filter-group">
+                            <h4>Categories</h4>
+                            <div class="filter-checkbox">
+                                <input type="checkbox" id="filter-cloud" checked>
+                                <label for="filter-cloud">
+                                    <span class="category-dot cloud"></span>
+                                    Cloud Computing
+                                </label>
+                            </div>
+                            <div class="filter-checkbox">
+                                <input type="checkbox" id="filter-security" checked>
+                                <label for="filter-security">
+                                    <span class="category-dot security"></span>
+                                    Security
+                                </label>
+                            </div>
+                            <div class="filter-checkbox">
+                                <input type="checkbox" id="filter-devops" checked>
+                                <label for="filter-devops">
+                                    <span class="category-dot devops"></span>
+                                    DevOps
+                                </label>
+                            </div>
+                            <div class="filter-checkbox">
+                                <input type="checkbox" id="filter-data" checked>
+                                <label for="filter-data">
+                                    <span class="category-dot data"></span>
+                                    Data & Analytics
+                                </label>
+                            </div>
+                            <div class="filter-checkbox">
+                                <input type="checkbox" id="filter-ai" checked>
+                                <label for="filter-ai">
+                                    <span class="category-dot ai"></span>
+                                    AI & Machine Learning
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <h4>Knowledge Level</h4>
+                            <div class="filter-slider">
+                                <input type="range" id="knowledgeLevel" min="0" max="100" value="50">
+                                <div class="slider-labels">
+                                    <span>Beginner</span>
+                                    <span>Expert</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <h4>Last Updated</h4>
+                            <div class="filter-radio">
+                                <input type="radio" id="time-all" name="time" checked>
+                                <label for="time-all">All Time</label>
+                            </div>
+                            <div class="filter-radio">
+                                <input type="radio" id="time-year" name="time">
+                                <label for="time-year">Past Year</label>
+                            </div>
+                            <div class="filter-radio">
+                                <input type="radio" id="time-month" name="time">
+                                <label for="time-month">Past Month</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="map-stats">
+                        <h3><i class="fas fa-chart-bar"></i> Statistics</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <h4>156</h4>
+                                <p>Topics</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>42</h4>
+                                <p>Completed</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>78</h4>
+                                <p>In Progress</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>36</h4>
+                                <p>To Explore</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map Visualization Area -->
+                <div class="map-visualization">
+                    <div class="map-header">
+                        <h3>Cloud Native Knowledge Ecosystem</h3>
+                        <p>Interactive visualization of your learning journey</p>
+                    </div>
+                    
+                    <div class="map-canvas" id="mapCanvas">
+                        <!-- Knowledge nodes will be rendered here -->
+                        <div class="knowledge-map">
+                            <!-- Central Node -->
+                            <div class="node central" data-id="cloud-native">
+                                <div class="node-content">
+                                    <i class="fas fa-cloud"></i>
+                                    <h4>Cloud Native</h4>
+                                </div>
+                            </div>
+                            
+                            <!-- First Level Nodes -->
+                            <div class="node level-1 cloud" data-id="containers">
+                                <div class="node-content">
+                                    <i class="fab fa-docker"></i>
+                                    <h4>Containers</h4>
+                                    <div class="node-progress">
+                                        <div class="progress-bar" style="width: 85%"></div>
+                                        <span>85%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="node level-1 devops" data-id="orchestration">
+                                <div class="node-content">
+                                    <i class="fas fa-sitemap"></i>
+                                    <h4>Orchestration</h4>
+                                    <div class="node-progress">
+                                        <div class="progress-bar" style="width: 70%"></div>
+                                        <span>70%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="node level-1 security" data-id="security">
+                                <div class="node-content">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <h4>Security</h4>
+                                    <div class="node-progress">
+                                        <div class="progress-bar" style="width: 60%"></div>
+                                        <span>60%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="node level-1 data" data-id="data-services">
+                                <div class="node-content">
+                                    <i class="fas fa-database"></i>
+                                    <h4>Data Services</h4>
+                                    <div class="node-progress">
+                                        <div class="progress-bar" style="width: 45%"></div>
+                                        <span>45%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="node level-1 ai" data-id="ai-ml">
+                                <div class="node-content">
+                                    <i class="fas fa-brain"></i>
+                                    <h4>AI/ML</h4>
+                                    <div class="node-progress">
+                                        <div class="progress-bar" style="width: 30%"></div>
+                                        <span>30%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Connection Lines -->
+                            <svg class="connections">
+                                <line x1="50%" y1="50%" x2="30%" y2="20%" class="connection"></line>
+                                <line x1="50%" y1="50%" x2="40%" y2="50%" class="connection"></line>
+                                <line x1="50%" y1="50%" x2="30%" y2="80%" class="connection"></line>
+                                <line x1="50%" y1="50%" x2="60%" y2="50%" class="connection"></line>
+                                <line x1="50%" y1="50%" x2="70%" y2="50%" class="connection"></line>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <div class="map-legend">
+                        <h4>Legend</h4>
+                        <div class="legend-items">
+                            <div class="legend-item">
+                                <span class="legend-dot cloud"></span>
+                                <span>Cloud Computing</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-dot security"></span>
+                                <span>Security</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-dot devops"></span>
+                                <span>DevOps</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-dot data"></span>
+                                <span>Data & Analytics</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-dot ai"></span>
+                                <span>AI & ML</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Knowledge Details Panel -->
+                <div class="knowledge-details" id="knowledgeDetails">
+                    <div class="details-header">
+                        <h3>Topic Details</h3>
+                        <button class="close-details" id="closeDetails">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="details-content">
+                        <div class="topic-header">
+                            <div class="topic-icon">
+                                <i class="fab fa-docker"></i>
+                            </div>
+                            <div class="topic-info">
+                                <h4 id="topicTitle">Containers</h4>
+                                <div class="topic-meta">
+                                    <span class="topic-category cloud">Cloud Computing</span>
+                                    <span class="topic-level intermediate">Intermediate</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="topic-progress">
+                            <h5>Learning Progress</h5>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 85%"></div>
+                                <span>85% Complete</span>
+                            </div>
+                        </div>
+                        
+                        <div class="topic-description">
+                            <h5>Description</h5>
+                            <p id="topicDescription">
+                                Containers are lightweight, standalone, executable packages that include everything needed to run a piece of software. Docker is the most popular container platform.
+                            </p>
+                        </div>
+                        
+                        <div class="topic-resources">
+                            <h5>Learning Resources</h5>
+                            <div class="resources-list">
+                                <div class="resource-item">
+                                    <i class="fas fa-book"></i>
+                                    <div>
+                                        <h6>Docker Documentation</h6>
+                                        <p>Official Docker documentation and guides</p>
+                                    </div>
+                                    <a href="#" class="resource-link">View</a>
+                                </div>
+                                <div class="resource-item">
+                                    <i class="fas fa-video"></i>
+                                    <div>
+                                        <h6>Container Basics Course</h6>
+                                        <p>Beginner course on container fundamentals</p>
+                                    </div>
+                                    <a href="#" class="resource-link">Start</a>
+                                </div>
+                                <div class="resource-item">
+                                    <i class="fas fa-code"></i>
+                                    <div>
+                                        <h6>Hands-on Labs</h6>
+                                        <p>Practical exercises with Docker</p>
+                                    </div>
+                                    <a href="#" class="resource-link">Try</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="topic-actions">
+                            <button class="btn primary-btn">
+                                <i class="fas fa-play"></i> Continue Learning
+                            </button>
+                            <button class="btn secondary-btn">
+                                <i class="fas fa-bookmark"></i> Save for Later
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="main-footer">
+                <p>© 2024 Cloud Native Authentication System. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Support</a>
+                </div>
+            </footer>
+        </main>
+
+        <!-- Overlay -->
+        <div class="overlay" id="overlay"></div>
+    </div>
+
+    <script src="knowledge-map.js"></script>
+</body>
+</html>

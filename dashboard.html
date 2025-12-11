@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Cloud Native</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <img src="Cloud_icon1.png" alt="Cloud Icon" class="cloud-icon">
+                    <h1>Cloud Native</h1>
+                </div>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <div class="user-profile">
+                <div class="avatar">
+                    <img src="https://ui-avatars.com/api/?name=User&background=4b0082&color=fff" 
+                         alt="User Avatar" id="userAvatar">
+                </div>
+                <div class="user-info">
+                    <h3 id="userDisplayName">Loading...</h3>
+                    <p id="userEmail">user@example.com</p>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item active">
+                    <a href="dashboard.html">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="profile.html">
+                        <i class="fas fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="knowledge-map.html">
+                        <i class="fas fa-map"></i>
+                        <span>Knowledge Map</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html">
+                        <i class="fas fa-info-circle"></i>
+                        <span>About</span>
+                    </a>
+                </li>
+                <li class="nav-item logout">
+                    <a href="#" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="sidebar-footer">
+                <div class="system-status">
+                    <div class="status-indicator online"></div>
+                    <span>System Online</span>
+                </div>
+                <div class="version">v1.0.0</div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    <h2>Dashboard</h2>
+                    <div class="breadcrumb">Home / Dashboard</div>
+                </div>
+                <div class="header-right">
+                    <div class="notifications">
+                        <button class="notification-btn" id="notificationBtn">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-count" id="notificationCount">3</span>
+                        </button>
+                    </div>
+                    <div class="date-time">
+                        <span id="currentDate"></span>
+                        <span id="currentTime"></span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <div class="welcome-card">
+                    <div class="welcome-content">
+                        <h2>Welcome back, <span id="welcomeName">User</span>! 👋</h2>
+                        <p>Here's what's happening with your account today.</p>
+                    </div>
+                    <div class="welcome-stats">
+                        <div class="stat">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h3 id="unreadEmails">12</h3>
+                                <p>Unread emails</p>
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-tasks"></i>
+                            <div>
+                                <h3 id="pendingTasks">5</h3>
+                                <p>Pending tasks</p>
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-calendar-check"></i>
+                            <div>
+                                <h3 id="upcomingEvents">3</h3>
+                                <p>Upcoming events</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Main Dashboard Grid -->
+            <div class="dashboard-grid">
+                <!-- Left Column -->
+                <div class="grid-column">
+                    <!-- Important Updates -->
+                    <section class="dashboard-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-exclamation-circle"></i> Important Updates</h3>
+                            <button class="card-action" id="refreshUpdates">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        </div>
+                        <div class="card-content">
+                            <div class="updates-list" id="importantUpdates">
+                                <!-- Updates will be loaded here -->
+                                <div class="update-item important">
+                                    <div class="update-icon">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <div class="update-content">
+                                        <h4>Security Update Required</h4>
+                                        <p>Please update your password for enhanced security.</p>
+                                        <span class="update-time">Today, 10:30 AM</span>
+                                    </div>
+                                </div>
+                                <div class="update-item warning">
+                                    <div class="update-icon">
+                                        <i class="fas fa-server"></i>
+                                    </div>
+                                    <div class="update-content">
+                                        <h4>System Maintenance</h4>
+                                        <p>Scheduled maintenance on Sunday, 2:00 AM - 4:00 AM.</p>
+                                        <span class="update-time">Tomorrow</span>
+                                    </div>
+                                </div>
+                                <div class="update-item info">
+                                    <div class="update-icon">
+                                        <i class="fas fa-bullhorn"></i>
+                                    </div>
+                                    <div class="update-content">
+                                        <h4>New Feature Released</h4>
+                                        <p>Knowledge Map feature is now available. Check it out!</p>
+                                        <span class="update-time">2 days ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Email Priority -->
+                    <section class="dashboard-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-inbox"></i> Email Priority</h3>
+                            <div class="email-filters">
+                                <button class="filter-btn active" data-filter="all">All</button>
+                                <button class="filter-btn" data-filter="important">Important</button>
+                                <button class="filter-btn" data-filter="spam">Spam</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="email-list" id="emailList">
+                                <!-- Emails will be loaded here -->
+                                <div class="email-item important">
+                                    <div class="email-sender">
+                                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=4b0082&color=fff" 
+                                             alt="Sender" class="sender-avatar">
+                                        <div>
+                                            <h4>John Doe</h4>
+                                            <p>Meeting Agenda</p>
+                                        </div>
+                                    </div>
+                                    <div class="email-preview">
+                                        <p>Please review the agenda for tomorrow's meeting...</p>
+                                        <span class="email-time">10:15 AM</span>
+                                    </div>
+                                    <div class="email-actions">
+                                        <button class="email-action-btn star active">
+                                            <i class="fas fa-star"></i>
+                                        </button>
+                                        <button class="email-action-btn archive">
+                                            <i class="fas fa-archive"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="email-item normal">
+                                    <div class="email-sender">
+                                        <img src="https://ui-avatars.com/api/?name=Team+Cloud&background=667eea&color=fff" 
+                                             alt="Sender" class="sender-avatar">
+                                        <div>
+                                            <h4>Team Cloud</h4>
+                                            <p>Weekly Newsletter</p>
+                                        </div>
+                                    </div>
+                                    <div class="email-preview">
+                                        <p>This week's updates and new features...</p>
+                                        <span class="email-time">Yesterday</span>
+                                    </div>
+                                    <div class="email-actions">
+                                        <button class="email-action-btn star">
+                                            <i class="fas fa-star"></i>
+                                        </button>
+                                        <button class="email-action-btn archive">
+                                            <i class="fas fa-archive"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="email-item spam">
+                                    <div class="email-sender">
+                                        <img src="https://ui-avatars.com/api/?name=Promotion&background=ff4444&color=fff" 
+                                             alt="Sender" class="sender-avatar">
+                                        <div>
+                                            <h4>Special Offer</h4>
+                                            <p>Limited Time Deal!</p>
+                                        </div>
+                                    </div>
+                                    <div class="email-preview">
+                                        <p>Exclusive offer just for you...</p>
+                                        <span class="email-time">2 days ago</span>
+                                    </div>
+                                    <div class="email-actions">
+                                        <button class="email-action-btn delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Right Column -->
+                <div class="grid-column">
+                    <!-- Quick Stats -->
+                    <section class="dashboard-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-chart-line"></i> Quick Stats</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="stats-grid">
+                                <div class="stat-card">
+                                    <div class="stat-icon" style="background: #667eea;">
+                                        <i class="fas fa-envelope-open-text"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <h4>245</h4>
+                                        <p>Total Emails</p>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon" style="background: #4CAF50;">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <h4>189</h4>
+                                        <p>Completed</p>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon" style="background: #ff9800;">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <h4>42</h4>
+                                        <p>Pending</p>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon" style="background: #f44336;">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <h4>14</h4>
+                                        <p>Issues</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Mandatory Tasks -->
+                    <section class="dashboard-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-tasks"></i> Mandatory Tasks</h3>
+                            <button class="add-task-btn" id="addTaskBtn">
+                                <i class="fas fa-plus"></i> Add
+                            </button>
+                        </div>
+                        <div class="card-content">
+                            <div class="task-list" id="taskList">
+                                <!-- Tasks will be loaded here -->
+                                <div class="task-item high">
+                                    <div class="task-checkbox">
+                                        <input type="checkbox" id="task1">
+                                        <label for="task1"></label>
+                                    </div>
+                                    <div class="task-content">
+                                        <h4>Complete security verification</h4>
+                                        <p>Required for account access</p>
+                                        <div class="task-meta">
+                                            <span class="task-priority high">High</span>
+                                            <span class="task-deadline">Today</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="task-item medium">
+                                    <div class="task-checkbox">
+                                        <input type="checkbox" id="task2">
+                                        <label for="task2"></label>
+                                    </div>
+                                    <div class="task-content">
+                                        <h4>Review quarterly report</h4>
+                                        <p>Finance department</p>
+                                        <div class="task-meta">
+                                            <span class="task-priority medium">Medium</span>
+                                            <span class="task-deadline">Tomorrow</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="task-item low">
+                                    <div class="task-checkbox">
+                                        <input type="checkbox" id="task3">
+                                        <label for="task3"></label>
+                                    </div>
+                                    <div class="task-content">
+                                        <h4>Update profile information</h4>
+                                        <p>Keep your details current</p>
+                                        <div class="task-meta">
+                                            <span class="task-priority low">Low</span>
+                                            <span class="task-deadline">This week</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Recent Activity -->
+                    <section class="dashboard-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-history"></i> Recent Activity</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="activity-timeline" id="activityTimeline">
+                                <!-- Activity items will be loaded here -->
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-sign-in-alt"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p>You logged in to the system</p>
+                                        <span class="activity-time">Just now</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p>Received email from John Doe</p>
+                                        <span class="activity-time">30 minutes ago</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-user-edit"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p>Updated your profile settings</p>
+                                        <span class="activity-time">2 hours ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="main-footer">
+                <p>© 2024 Cloud Native Authentication System. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Support</a>
+                </div>
+            </footer>
+        </main>
+
+        <!-- Notifications Panel -->
+        <div class="notifications-panel" id="notificationsPanel">
+            <div class="panel-header">
+                <h3>Notifications</h3>
+                <button class="close-panel" id="closeNotifications">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="panel-content">
+                <div class="notification-item unread">
+                    <div class="notification-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="notification-content">
+                        <h4>New message received</h4>
+                        <p>You have a new message from the support team.</p>
+                        <span class="notification-time">10 min ago</span>
+                    </div>
+                </div>
+                <div class="notification-item unread">
+                    <div class="notification-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="notification-content">
+                        <h4>Security alert</h4>
+                        <p>Unusual login detected from new location.</p>
+                        <span class="notification-time">1 hour ago</span>
+                    </div>
+                </div>
+                <div class="notification-item">
+                    <div class="notification-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="notification-content">
+                        <h4>Meeting reminder</h4>
+                        <p>Team meeting in 30 minutes.</p>
+                        <span class="notification-time">2 hours ago</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Overlay for mobile -->
+        <div class="overlay" id="overlay"></div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

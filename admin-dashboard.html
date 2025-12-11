@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Cloud Native</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .dashboard-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .admin-welcome {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .admin-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .logout-btn {
+            background: #ff4444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .dashboard-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: 1px solid #eaeaea;
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .card-icon {
+            font-size: 30px;
+            color: var(--primary-color);
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--text-color);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: var(--secondary-text);
+            font-size: 14px;
+        }
+        
+        .admin-menu {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .menu-item {
+            padding: 12px 25px;
+            background: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .menu-item:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .menu-item.active {
+            background: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="admin-header">
+            <div class="admin-welcome">
+                <div class="admin-avatar">A</div>
+                <div>
+                    <h1>Welcome, Admin!</h1>
+                    <p>Cloud Native Admin Dashboard</p>
+                </div>
+            </div>
+            <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
+        
+        <div class="admin-menu">
+            <div class="menu-item active">Dashboard</div>
+            <div class="menu-item">Users</div>
+            <div class="menu-item">Analytics</div>
+            <div class="menu-item">Settings</div>
+            <div class="menu-item">Logs</div>
+        </div>
+        
+        <div class="dashboard-grid">
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3>Total Users</h3>
+                    <div class="card-icon">👥</div>
+                </div>
+                <div class="stat-number">1,248</div>
+                <div class="stat-label">Active Users</div>
+            </div>
+            
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3>Sessions</h3>
+                    <div class="card-icon">📊</div>
+                </div>
+                <div class="stat-number">5,632</div>
+                <div class="stat-label">Today</div>
+            </div>
+            
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3>Growth</h3>
+                    <div class="card-icon">📈</div>
+                </div>
+                <div class="stat-number">+24%</div>
+                <div class="stat-label">This Month</div>
+            </div>
+            
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3>Security</h3>
+                    <div class="card-icon">🔒</div>
+                </div>
+                <div class="stat-number">100%</div>
+                <div class="stat-label">System Secure</div>
+            </div>
+        </div>
+        
+        <div class="dashboard-card">
+            <h3>Quick Actions</h3>
+            <div class="admin-menu">
+                <div class="menu-item">Add User</div>
+                <div class="menu-item">View Reports</div>
+                <div class="menu-item">System Backup</div>
+                <div class="menu-item">Send Notification</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const logoutBtn = document.getElementById('logoutBtn');
+            
+            // Check if admin is logged in
+            const adminAuth = sessionStorage.getItem('admin_auth');
+            if (!adminAuth) {
+                window.location.href = 'admin-login.html';
+            } else {
+                const adminData = JSON.parse(adminAuth);
+                document.querySelector('.admin-avatar').textContent = 
+                    adminData.displayName ? adminData.displayName.charAt(0).toUpperCase() : 'A';
+                
+                document.querySelector('.admin-welcome h1').textContent = 
+                    `Welcome, ${adminData.displayName || 'Admin'}!`;
+            }
+            
+            // Logout handler
+            logoutBtn.addEventListener('click', () => {
+                sessionStorage.removeItem('admin_auth');
+                window.location.href = 'admin-login.html';
+            });
+            
+            // Menu item handlers
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    // Remove active class from all items
+                    document.querySelectorAll('.menu-item').forEach(i => {
+                        i.classList.remove('active');
+                    });
+                    // Add active class to clicked item
+                    item.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

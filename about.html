@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Cloud Native</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <img src="Cloud_icon1.png" alt="Cloud Icon" class="cloud-icon">
+                    <h1>Cloud Native</h1>
+                </div>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <div class="user-profile">
+                <div class="avatar">
+                    <img src="https://ui-avatars.com/api/?name=User&background=4b0082&color=fff" 
+                         alt="User Avatar" id="userAvatar">
+                </div>
+                <div class="user-info">
+                    <h3 id="userDisplayName">Loading...</h3>
+                    <p id="userEmail">user@example.com</p>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="dashboard.html">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="profile.html">
+                        <i class="fas fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="knowledge-map.html">
+                        <i class="fas fa-map"></i>
+                        <span>Knowledge Map</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="about.html">
+                        <i class="fas fa-info-circle"></i>
+                        <span>About</span>
+                    </a>
+                </li>
+                <li class="nav-item logout">
+                    <a href="#" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="sidebar-footer">
+                <div class="system-status">
+                    <div class="status-indicator online"></div>
+                    <span>System Online</span>
+                </div>
+                <div class="version">v1.0.0</div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    <h2>About</h2>
+                    <div class="breadcrumb">Home / About</div>
+                </div>
+                <div class="header-right">
+                    <div class="date-time">
+                        <span id="currentDate"></span>
+                        <span id="currentTime"></span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- About Content -->
+            <div class="about-container">
+                <!-- Hero Section -->
+                <section class="hero-section">
+                    <div class="hero-content">
+                        <h1>Cloud Native Authentication System</h1>
+                        <p class="tagline">Secure, Scalable, and Modern Authentication Solution</p>
+                        <p class="description">
+                            A comprehensive authentication platform built with modern cloud-native technologies, 
+                            providing secure user management, role-based access control, and seamless integration 
+                            with popular identity providers.
+                        </p>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <h3>100%</h3>
+                            <p>Security</p>
+                        </div>
+                        <div class="stat">
+                            <h3>24/7</h3>
+                            <p>Availability</p>
+                        </div>
+                        <div class="stat">
+                            <h3>99.9%</h3>
+                            <p>Uptime</p>
+                        </div>
+                        <div class="stat">
+                            <h3>10K+</h3>
+                            <p>Users</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Features Section -->
+                <section class="features-section">
+                    <h2 class="section-title">Key Features</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Enhanced Security</h3>
+                            <p>Multi-factor authentication, JWT tokens, and end-to-end encryption ensure your data is always protected.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h3>High Performance</h3>
+                            <p>Built with Node.js and optimized for speed, handling thousands of requests per second with minimal latency.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-expand"></i>
+                            </div>
+                            <h3>Scalability</h3>
+                            <p>Cloud-native architecture allows automatic scaling to meet growing user demands without performance degradation.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-plug"></i>
+                            </div>
+                            <h3>Easy Integration</h3>
+                            <p>RESTful API and comprehensive documentation make integration with existing systems simple and straightforward.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3>Mobile Ready</h3>
+                            <p>Fully responsive design works perfectly on desktops, tablets, and mobile devices.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Analytics Dashboard</h3>
+                            <p>Comprehensive analytics and reporting tools to monitor user activity and system performance.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Technology Stack -->
+                <section class="tech-stack-section">
+                    <h2 class="section-title">Technology Stack</h2>
+                    <div class="tech-grid">
+                        <div class="tech-card">
+                            <div class="tech-icon">
+                                <i class="fab fa-node-js"></i>
+                            </div>
+                            <h3>Node.js</h3>
+                            <p>JavaScript runtime built on Chrome's V8 JavaScript engine for server-side development.</p>
+                        </div>
+                        
+                        <div class="tech-card">
+                            <div class="tech-icon">
+                                <i class="fab fa-js-square"></i>
+                            </div>
+                            <h3>Express.js</h3>
+                            <p>Fast, unopinionated, minimalist web framework for Node.js applications.</p>
+                        </div>
+                        
+                        <div class="tech-card">
+                            <div class="tech-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h3>MongoDB</h3>
+                            <p>NoSQL database for flexible, scalable data storage with JSON-like documents.</p>
+                        </div>
+                        
+                        <div class="tech-card">
+                            <div class="tech-icon">
+                                <i class="fas fa-key"></i>
+                            </div>
+                            <h3>JWT</h3>
+                            <p>JSON Web Tokens for secure authentication and authorization.</p>
+                        </div>
+                        
+                        <div class="tech-card">
+                            <div class="tech-icon">
+                                <i class="fab fa-google"></i>
+                            </div>
+                            <h3>Google OAuth</h3>
+                            <p>Secure authentication using Google accounts with OAuth 2.0 protocol.</p>
+                        </div>
+                        
+                        <div class="tech-card">
+                            <div class="tech-icon">
+                                <i class="fab fa-html5"></i>
+                            </div>
+                            <h3>HTML5 & CSS3</h3>
+                            <p>Modern web standards for responsive and accessible user interfaces.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Team Section -->
+                <section class="team-section">
+                    <h2 class="section-title">Our Team</h2>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <img src="https://ui-avatars.com/api/?name=Alex+Johnson&background=4b0082&color=fff&size=150" alt="Alex Johnson">
+                            </div>
+                            <h3>Alex Johnson</h3>
+                            <p class="member-role">Lead Developer</p>
+                            <p class="member-bio">Cloud architecture expert with 10+ years of experience in distributed systems.</p>
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-github"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <img src="https://ui-avatars.com/api/?name=Maria+Garcia&background=667eea&color=fff&size=150" alt="Maria Garcia">
+                            </div>
+                            <h3>Maria Garcia</h3>
+                            <p class="member-role">Security Specialist</p>
+                            <p class="member-bio">Cybersecurity professional specializing in authentication and authorization systems.</p>
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-github"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <img src="https://ui-avatars.com/api/?name=David+Chen&background=ff9800&color=fff&size=150" alt="David Chen">
+                            </div>
+                            <h3>David Chen</h3>
+                            <p class="member-role">UI/UX Designer</p>
+                            <p class="member-bio">Creative designer focused on creating intuitive and beautiful user experiences.</p>
+                            <div class="member-social">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-dribbble"></i></a>
+                                <a href="#"><i class="fab fa-behance"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact Section -->
+                <section class="contact-section">
+                    <div class="contact-content">
+                        <h2 class="section-title">Get In Touch</h2>
+                        <p>Have questions or need support? We're here to help!</p>
+                        
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <h4>Email</h4>
+                                    <p>support@cloudnative.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <h4>Phone</h4>
+                                    <p>+1 (555) 123-4567</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <h4>Location</h4>
+                                    <p>San Francisco, CA</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-form">
+                            <h3>Send us a Message</h3>
+                            <form id="contactForm">
+                                <div class="form-row">
+                                    <input type="text" placeholder="Your Name" required>
+                                    <input type="email" placeholder="Your Email" required>
+                                </div>
+                                <input type="text" placeholder="Subject" required>
+                                <textarea placeholder="Your Message" rows="4" required></textarea>
+                                <button type="submit" class="btn primary-btn">
+                                    <i class="fas fa-paper-plane"></i> Send Message
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FAQ Section -->
+                <section class="faq-section">
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span>Is my data secure?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Yes, we use industry-standard encryption, secure protocols, and regular security audits to ensure your data is always protected.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span>Can I use my Google account to sign in?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Yes, we support Google OAuth authentication. You can sign in using your Google account with one click.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span>How do I reset my password?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Click on "Forgot password" on the login page and follow the instructions sent to your email.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span>Is there a mobile app?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Our web application is fully responsive and works perfectly on mobile devices. Native mobile apps are coming soon.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span>What browsers are supported?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>We support all modern browsers including Chrome, Firefox, Safari, and Edge.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Footer -->
+            <footer class="main-footer">
+                <p>© 2024 Cloud Native Authentication System. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Support</a>
+                    <a href="#">Documentation</a>
+                    <a href="#">API Reference</a>
+                </div>
+            </footer>
+        </main>
+
+        <!-- Overlay -->
+        <div class="overlay" id="overlay"></div>
+    </div>
+
+    <script src="about.js"></script>
+</body>
+</html>

@@ -299,7 +299,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data.success) {
                 storeToken(data.token);
                 showSuccess(`Welcome, ${data.user.displayName || data.user.email}!`);
-                await updateUIForLoggedInUser();
+                
+                // Redirect to dashboard after 2 seconds
+                setTimeout(() => {
+                    window.location.href = '/dashboard';
+                }, 2000);
             } else {
                 displayError(passwordError, passwordInput, data.message || 'Invalid credentials.');
                 showError(data.message || 'Login failed. Please check your credentials.');
@@ -367,7 +371,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ========================
-    // GOOGLE AUTHENTICATION
+    // GOOGLE AUTHENTICATION - FIXED
     // ========================
     googleBtn.addEventListener('click', async () => {
         console.log('Google Sign-In clicked');
@@ -443,8 +447,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Show success message
                     showSuccess(`Welcome, ${user.displayName || user.email}!`);
                     
-                    // Update UI
-                    await updateUIForLoggedInUser();
+                    // Redirect to dashboard after 2 seconds
+                    setTimeout(() => {
+                        window.location.href = '/dashboard';
+                    }, 2000);
                     
                     // Close the popup
                     if (popup && !popup.closed) {
@@ -474,7 +480,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     // Check if user logged in during popup
                     if (isLoggedIn()) {
-                        updateUIForLoggedInUser();
+                        // Redirect to dashboard if logged in
+                        setTimeout(() => {
+                            window.location.href = '/dashboard';
+                        }, 500);
                     }
                 }
             }, 500);
@@ -547,8 +556,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // Show success message
             showSuccess(`Welcome, ${user.displayName || user.email}!`);
             
-            // Update UI
-            updateUIForLoggedInUser();
+            // Redirect to dashboard after 2 seconds
+            setTimeout(() => {
+                window.location.href = '/dashboard';
+            }, 2000);
         }
     });
 
@@ -575,7 +586,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Check if user is already logged in
         const isRemembered = localStorage.getItem('remember_me') === 'true';
         if (isRemembered && isLoggedIn()) {
-            await updateUIForLoggedInUser();
+            // Redirect directly to dashboard if already logged in
+            window.location.href = '/dashboard';
         }
         
         // Set up remember me checkbox

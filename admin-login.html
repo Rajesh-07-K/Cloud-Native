@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Cloud Native</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .admin-login-panel {
+            flex: 1;
+            background-color: #ffffff;
+            padding: 40px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .admin-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .admin-features {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .admin-features h3 {
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+        
+        .admin-features ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .admin-features li {
+            padding: 5px 0;
+            color: var(--secondary-text);
+        }
+        
+        .admin-features li:before {
+            content: "✓ ";
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .admin-separator {
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .admin-separator:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--border-color);
+        }
+        
+        .admin-separator span {
+            background: white;
+            padding: 0 15px;
+            color: var(--secondary-text);
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="admin-login-panel">
+            <a href="index.html" class="back-link">
+                ← Back to User Login
+            </a>
+            
+            <div class="logo">
+                <h1>
+                    <img src="Cloud_icon1.png" alt="Cloud Icon" class="cloud-icon">
+                    Cloud Native
+                </h1>
+            </div>
+
+            <div class="admin-badge">Admin Portal</div>
+
+            <div class="welcome-section">
+                <h2>Admin Authentication</h2>
+                <p>Secure access to administrative controls</p>
+            </div>
+
+            <form class="login-form" id="adminLoginForm">
+                <label for="adminEmail">Admin Email</label>
+                <input type="email" id="adminEmail" name="email" required placeholder="admin@example.com">
+                <span class="error-message" id="adminEmail-error"></span>
+
+                <label for="adminPassword">Admin Password</label>
+                <input type="password" id="adminPassword" name="password" required placeholder="••••••••">
+                <span class="error-message" id="adminPassword-error"></span>
+
+                <button type="submit" class="btn primary-btn">Sign in as Admin</button>
+                
+                <div class="admin-separator">
+                    <span>OR</span>
+                </div>
+                
+                <button type="button" class="btn google-btn" id="adminGoogleBtn">
+                    <img src="google_btn.png" alt="Google Logo" class="google-img">
+                    Admin Sign in with Google
+                </button>
+            </form>
+
+            <div class="admin-features">
+                <h3>Admin Features:</h3>
+                <ul>
+                    <li>User Management</li>
+                    <li>System Analytics</li>
+                    <li>Configuration Settings</li>
+                    <li>Security Logs</li>
+                    <li>Backup Controls</li>
+                </ul>
+            </div>
+
+            <div class="signup-link">
+                Not an admin? <a href="index.html">User Login</a> | 
+                <a href="signup.html">Create User Account</a>
+            </div>
+        </div>
+        
+        <div class="illustration-panel">
+            <!-- This will show the cloud graphic -->
+        </div>
+    </div>
+    
+    <script src="admin-login.js"></script>
+</body>
+</html>
