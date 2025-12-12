@@ -317,57 +317,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ========================
-    // SIGN UP HANDLER
+    // SIGN UP HANDLER (REDIRECT TO SIGNUP PAGE)
     // ========================
-    signUpLink.addEventListener('click', async (event) => {
+    signUpLink.addEventListener('click', (event) => {
         event.preventDefault();
-        
-        // Simple signup modal
-        const email = prompt("Enter your email address for signup:");
-        if (!email) return;
-        
-        if (!isValidEmail(email)) {
-            showError('Please enter a valid email address.');
-            return;
-        }
-
-        const password = prompt("Enter a password (minimum 8 characters):");
-        if (!password || password.length < 8) {
-            showError('Password must be at least 8 characters long.');
-            return;
-        }
-
-        const displayName = prompt("Enter your display name (optional):");
-        
-        try {
-            const response = await fetch(API_ENDPOINTS.signup, {
-                method: 'POST',
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({ 
-                    email, 
-                    password,
-                    displayName: displayName || null
-                })
-            });
-            
-            const data = await response.json();
-
-            if (data.success) {
-                showSuccess(data.message);
-                // Auto-fill the login form with new credentials
-                emailInput.value = email;
-                passwordInput.value = password;
-                passwordInput.focus();
-            } else {
-                showError(data.message);
-            }
-        } catch (error) {
-            console.error('Signup error:', error);
-            showError('Registration failed. Please check your network connection.');
-        }
+        window.location.href = 'signup.html';
     });
 
     // ========================
